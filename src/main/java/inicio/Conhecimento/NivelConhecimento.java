@@ -1,4 +1,7 @@
 package inicio.Conhecimento;
 
-public class NivelConhecimento {
+public enum NivelConhecimento {
+    INICIANTE,
+    INTEMEDIARIO,
+    AVANCADO,
 }

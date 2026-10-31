@@ -1,6 +1,5 @@
-package inicio.Leitura;
-
 import inicio.Conhecimento.metadados;
+import inicio.Leitura.leitorMetadados;
 
 import java.io.IOException;
 import java.nio.file.Path;

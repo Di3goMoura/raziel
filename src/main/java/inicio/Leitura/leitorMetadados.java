@@ -20,6 +20,10 @@ public class leitorMetadados {
         String conteudo = Files.readString(caminhoArquivo);
         int inicio = conteudo.indexOf("---");
         int fim = conteudo.indexOf("---", inicio + 3);
+        if ( inicio ==-1 || fim== -1){
+            throw new IOException("yamal nao encontrado");
+
+        }
         String yaml = conteudo.substring(inicio + 3, fim);
         Map<String, Object> dados = interpretador.load(yaml);
         String titulo = (String) dados.get("titulo");

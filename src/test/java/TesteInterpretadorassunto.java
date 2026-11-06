@@ -1,5 +1,3 @@
-
-
 import inicio.Leitura.LeitorVault;
 import inicio.Leitura.RepositorioNotas;
 import inicio.Interpretacao.InterpretadorAssunto;
@@ -29,6 +27,7 @@ public class TesteInterpretadorassunto {
 
         // 6. Fazer uma pergunta
         String pergunta = "COMO FUNCIONA ENCAPSULAMENTO";
+
 
         // 7. Interpretar a pergunta
         List<String> idsEncontrados = interpretador.interpretador(pergunta);

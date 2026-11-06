@@ -1,4 +1,4 @@
 package inicio.Interpretacao;
 
-public class InterpretadorNivel {
+public class InterpretadorPergunta {
 }

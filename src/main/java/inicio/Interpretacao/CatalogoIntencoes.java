@@ -32,7 +32,6 @@ public class CatalogoIntencoes {
                 expressoes.put(intencao, listaexpressoes);
 
             }
-            System.out.println(expressoes);
         }
 
     }

@@ -6,7 +6,7 @@ import inicio.Leitura.RepositorioNotas;
 import java.nio.file.Path;
 import java.util.List;
 
-public class testeLocalizadornotas {
+/*public class testeLocalizadornotas {
     public static void main(String[] atgs) {
 
         Path caminhoVault = Path.of("C:\\Raziel\\raziel\\vault");
@@ -27,4 +27,4 @@ public class testeLocalizadornotas {
         }
     }
 }
-
+*/

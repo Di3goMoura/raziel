@@ -3,52 +3,29 @@ package inicio.Busca;
 import inicio.Leitura.RegistroNotas;
 import inicio.Leitura.RepositorioNotas;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 public class LocalizadorNotas {
-    private RepositorioNotas repositorioNotas;
 
-    public LocalizadorNotas(RepositorioNotas repositorioNotas) {
+    private final RepositorioNotas repositorioNotas;
+    private final Map<String, RegistroNotas> notasPorId;
+
+    public LocalizadorNotas(RepositorioNotas repositorioNotas){
         this.repositorioNotas = repositorioNotas;
+        notasPorId = new  HashMap<>();
+    } public void indexNotas(){
+        notasPorId.clear();
+        for (RegistroNotas notas: repositorioNotas.getRegistros()){
+            String id = notas.getMetadados().getId();
 
-
-    }
-
-    public static void main(String[] args) {
-
-    }
-
-    public List<RegistroNotas> busca(String assuntoProcurado) {
-        List<RegistroNotas> nota = new ArrayList<>();
-
-
-        for (RegistroNotas notas : repositorioNotas.getRegistros()) {
-            Boolean encontrou = false;
-            if (assuntoProcurado.equalsIgnoreCase(notas.getMetadados().getId()) || assuntoProcurado.equalsIgnoreCase(notas.getMetadados().getTitulo())
-                    || assuntoProcurado.equalsIgnoreCase(notas.getMetadados().getAssunto()) || assuntoProcurado.equalsIgnoreCase(notas.getMetadados().getCategoria())) {
-                encontrou = true;
-            }
-
-            for (String palavrachave : notas.getMetadados().getPalavrasChave()) {
-                if (assuntoProcurado.equalsIgnoreCase(palavrachave)) {
-                    encontrou = true;
-
-                }
-
-            }
-            if (encontrou) {
-                nota.add(notas);
-            }
-
+            if (notasPorId.containsKey(id)){
+                throw new IllegalArgumentException("ID duplicado: " + id);
+            } notasPorId.put(id, notas);
         }
-        return nota;
+    } public RegistroNotas buscaPorId (String id){
+      return   notasPorId.get(id);
 
     }
 
 }
-
-
-
-
-

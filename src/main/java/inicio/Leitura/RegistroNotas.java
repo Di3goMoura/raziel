@@ -13,7 +13,7 @@ public class RegistroNotas {
        this.metadados = metadados;
 
 
-   } Path getCaminhoarquivo (){
+   }  public Path getCaminhoarquivo (){
        return caminhoarquivo;
 
     } public metadados getMetadados(){

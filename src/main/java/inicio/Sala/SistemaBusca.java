@@ -1,4 +1,4 @@
-package inicio.Busca;
+package inicio.Sala;
 
 public class SistemaBusca {
 }

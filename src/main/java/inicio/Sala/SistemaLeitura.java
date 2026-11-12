@@ -11,10 +11,10 @@ public class SistemaLeitura {
     LeitorVault leitorVault;
     RepositorioNotas repositorioNotas;
 
-    public  SistemaLeitura(Path camimhoVault){
+    public  SistemaLeitura(Path camimhoVault,  RepositorioNotas repositorioNotas){
        LeitorVault leitorVault = new LeitorVault(camimhoVault);
        this.leitorVault = leitorVault;
-       this.repositorioNotas = new RepositorioNotas(camimhoVault);
+       this.repositorioNotas = repositorioNotas;
        }
        public void iniciarLeitura(){
         repositorioNotas.carregarNotas(leitorVault);

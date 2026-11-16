@@ -50,37 +50,44 @@ public class FormatadorBlocosMarkdown {
 
         String[] linhas = codigo.split("\\R", -1);
 
-        int largura = linguagem.length();
+        int largura = String.valueOf(linhas.length).length();
+        int larguraCodigo = linguagem.length();
 
         for (String linha : linhas) {
-            largura = Math.max(largura, linha.length());
+            larguraCodigo = Math.max(larguraCodigo, largura + 3 + linha.length());
         }
 
         StringBuilder caixa = new StringBuilder();
 
         caixa.append("┌")
-                .append("─".repeat(largura + 2))
+                .append("─".repeat(larguraCodigo + 2))
                 .append("┐\n");
 
         caixa.append("│ ")
                 .append(linguagem)
-                .append(" ".repeat(largura - linguagem.length()))
+                .append(" ".repeat(larguraCodigo - linguagem.length()))
                 .append(" │\n");
 
         caixa.append("├")
-                .append("─".repeat(largura + 2))
+                .append("─".repeat(larguraCodigo + 2))
                 .append("┤\n");
 
-        for (String linha : linhas) {
+        for (int i = 0; i < linhas.length; i++) {
+            String numero = String.valueOf(i + 1);
+
+            String linha = " ".repeat(largura - numero.length())
+                    + numero
+                    + " | "
+                    + linhas[i];
 
             caixa.append("│ ")
                     .append(linha)
-                    .append(" ".repeat(largura - linha.length()))
+                    .append(" ".repeat(larguraCodigo - linha.length()))
                     .append(" │\n");
         }
 
         caixa.append("└")
-                .append("─".repeat(largura + 2))
+                .append("─".repeat(larguraCodigo + 2))
                 .append("┘");
 
         return caixa.toString();

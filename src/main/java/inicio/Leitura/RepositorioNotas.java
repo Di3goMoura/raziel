@@ -24,6 +24,9 @@ public class RepositorioNotas {
             leitorMetadados leitorMetadados = new leitorMetadados();
             try {
                 metadados metadadosNota = leitorMetadados.lermetadados(arquivo);
+                if (metadadosNota == null){
+                    continue;
+                }
                 RegistroNotas registro = new RegistroNotas(arquivo, metadadosNota);
                 registros.add(registro);
 

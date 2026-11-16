@@ -37,11 +37,12 @@ public class CentralComando {
         if (assuntos.isEmpty()) {
             return "Nao encontrei esse assunto nas minhas anotaçoes";
 
-        } if (intencoes.isEmpty()){
-            intencoes =List.of(Intencao.EXPLICACAO);
+        }
+        if (intencoes.isEmpty()) {
+            intencoes = List.of(Intencao.EXPLICACAO);
         }
         String id = assuntos.get(0);
-        String conteudo = sistemaBusca.buscaConteudo( id, intencoes, nivel );
+        String conteudo = sistemaBusca.buscaConteudo(id, intencoes, nivel);
 
         return sistemaResposta.resposta(conteudo);
     }

@@ -16,12 +16,12 @@ public class leitorMetadados {
 
     Yaml interpretador = new Yaml();
 
-    public metadados lermetadados(Path caminhoArquivo) throws IOException{
+    public metadados lermetadados(Path caminhoArquivo) throws IOException {
         String conteudo = Files.readString(caminhoArquivo);
         int inicio = conteudo.indexOf("---");
         int fim = conteudo.indexOf("---", inicio + 3);
-        if ( inicio ==-1 || fim== -1){
-            throw new IOException("yamal nao encontrado");
+        if (inicio == -1 || fim == -1) {
+            return null;
 
         }
         String yaml = conteudo.substring(inicio + 3, fim);
@@ -30,7 +30,7 @@ public class leitorMetadados {
         String id = (String) dados.get("id");
         String assunto = (String) dados.get("assunto");
         String categoria = (String) dados.get("categoria");
-        List<String>palavrasChave = (List<String>) dados.get("palavrasChave");
+        List<String> palavrasChave = (List<String>) dados.get("palavrasChave");
         metadados metadados = new metadados(titulo, assunto, categoria, id, palavrasChave);
 
         return metadados;

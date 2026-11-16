@@ -4,7 +4,6 @@ package inicio.raziel;
 import inicio.Busca.LocalizadorNotas;
 import inicio.Busca.SelecionadorConteudo;
 import inicio.Interpretacao.*;
-import inicio.Leitura.RegistroNotas;
 import inicio.Leitura.RepositorioNotas;
 import inicio.Resposta.ConstrutorResposta;
 import inicio.Sala.*;
@@ -14,6 +13,7 @@ import java.nio.file.Path;
 
 public class Main {
     public static void main(String[] args) {
+
 
         Path caminhoVault = Path.of("C:\\Raziel\\raziel\\vault");
         RepositorioNotas repositorio = new RepositorioNotas(caminhoVault);
@@ -46,6 +46,7 @@ public class Main {
         CiclodeVida ciclodeVida = new CiclodeVida();
         InterfaceTerminal interfaceTerminal = new InterfaceTerminal(centralComando, ciclodeVida);
         interfaceTerminal.Iniciar();
+
 
 
 

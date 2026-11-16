@@ -12,27 +12,31 @@ import java.util.Map;
 
 public class CatalogoNiveis {
     private final Path caminhoArquivo;
-    private final Map<NivelConhecimento, List<String> > niveis;
+    private final Map<NivelConhecimento, List<String>> niveis;
 
-    public CatalogoNiveis(Path caminhoArquivo){
+    public CatalogoNiveis(Path caminhoArquivo) {
         this.caminhoArquivo = caminhoArquivo;
         this.niveis = new HashMap<>();
 
 
-    } public void carregarNiveis() throws IOException{
+    }
+
+    public void carregarNiveis() throws IOException {
         try (InputStream entrada = Files.newInputStream(caminhoArquivo)) {
             Yaml yaml = new Yaml();
             Map<String, List<String>> informacoes = yaml.load(entrada);
-            for (Map.Entry<String, List<String>> entradaNivel : informacoes.entrySet()){
-                String nivel =  entradaNivel.getKey();
+            for (Map.Entry<String, List<String>> entradaNivel : informacoes.entrySet()) {
+                String nivel = entradaNivel.getKey();
                 NivelConhecimento nivelConhecimento = NivelConhecimento.valueOf(nivel);
                 List<String> listaNiveis = entradaNivel.getValue();
-                niveis.put(nivelConhecimento, listaNiveis );
+                niveis.put(nivelConhecimento, listaNiveis);
             }
 
         }
 
-    } public Map<NivelConhecimento, List<String>> getNiveis(){
+    }
+
+    public Map<NivelConhecimento, List<String>> getNiveis() {
         return niveis;
     }
 }

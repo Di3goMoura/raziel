@@ -11,16 +11,19 @@ public class SistemaLeitura {
     LeitorVault leitorVault;
     RepositorioNotas repositorioNotas;
 
-    public  SistemaLeitura(Path camimhoVault,  RepositorioNotas repositorioNotas){
-       LeitorVault leitorVault = new LeitorVault(camimhoVault);
-       this.leitorVault = leitorVault;
-       this.repositorioNotas = repositorioNotas;
-       }
-       public void iniciarLeitura(){
+    public SistemaLeitura(Path camimhoVault, RepositorioNotas repositorioNotas) {
+        LeitorVault leitorVault = new LeitorVault(camimhoVault);
+        this.leitorVault = leitorVault;
+        this.repositorioNotas = repositorioNotas;
+    }
+
+    public void iniciarLeitura() {
         repositorioNotas.carregarNotas(leitorVault);
 
-       } public List<RegistroNotas> getRegistros(){
-      return   repositorioNotas.getRegistros();
+    }
+
+    public List<RegistroNotas> getRegistros() {
+        return repositorioNotas.getRegistros();
 
     }
-    }
+}

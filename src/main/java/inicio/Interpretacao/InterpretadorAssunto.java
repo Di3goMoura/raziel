@@ -32,48 +32,54 @@ public class InterpretadorAssunto {
     private boolean corresponde(String pergunta, String termo) {
         termo = normalizar(termo);
 
-        String regex = "(?<![\\p{L}\\p{N}])"
-                + java.util.regex.Pattern.quote(termo)
-                + "(?![\\p{L}\\p{N}])";
+        String regex = "(?<![\\p{L}\\p{N}])" + java.util.regex.Pattern.quote(termo) + "(?![\\p{L}\\p{N}])";
 
-        return java.util.regex.Pattern
-                .compile(regex)
-                .matcher(pergunta)
-                .find();
+        return java.util.regex.Pattern.compile(regex).matcher(pergunta).find();
     }
 
-    private boolean correspondeEspecifico(
-            String pergunta, metadados dados) {
+    private boolean correspondeEspecifico(String pergunta, metadados dados) {
         boolean encontrouTitulo = corresponde(pergunta, dados.getTitulo());
         boolean encontrouId = corresponde(pergunta, dados.getId());
 
         boolean encontroupalavara = false;
 
-        for (String palavra : dados.getPalavrasChave()) {
 
-                if (corresponde(pergunta, palavra)){
+            for (Object palavra : dados.getPalavrasChave()) {
+
+                if (palavra != null &&
+                        corresponde(
+                                pergunta,
+                                String.valueOf(palavra)
+                        )) {
                     encontroupalavara = true;
+                    break;
                 }
             }
+
+
+
         return encontrouTitulo || encontrouId || encontroupalavara;
-        } public List<String> interpretador (String pergunta){
-       String  perguntaNormalizada = normalizar(pergunta);
-       List<String> idsEncontrados = new ArrayList<>();
-       for (RegistroNotas registro : repositorioNotas.getRegistros()){
-           metadados dados = registro.getMetadados();
-           boolean encontrou = correspondeEspecifico(perguntaNormalizada, dados);
-           if (encontrou){
-               idsEncontrados.add(dados.getId());
-           }
+
+    }
+
+    public List<String> interpretador(String pergunta) {
+        String perguntaNormalizada = normalizar(pergunta);
+        List<String> idsEncontrados = new ArrayList<>();
+        for (RegistroNotas registro : repositorioNotas.getRegistros()) {
+            metadados dados = registro.getMetadados();
+            boolean encontrou = correspondeEspecifico(perguntaNormalizada, dados);
+            if (encontrou) {
+                idsEncontrados.add(dados.getId());
+            }
 
 
-       }
+        }
 
 
         return idsEncontrados;
     }
 
-    }
+}
 
 
 

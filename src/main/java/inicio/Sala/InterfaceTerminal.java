@@ -24,6 +24,7 @@ public class InterfaceTerminal {
     public void Iniciar() {
         centralComando.ligar();
         ciclodeVida.ativar();
+        mostrarTelaInicial();
         iniciarleitor();
 
         while (ciclodeVida.estaAtivo()) {
@@ -48,8 +49,24 @@ public class InterfaceTerminal {
             ciclodeVida.registarInteracao();
             String resposta = centralComando.processarPergunta(pergunta);
             System.out.println(resposta);
+            System.out.println();
         }
 
+    } public void mostrarTelaInicial(){
+        System.out.println();
+        System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------------------");
+        System.out.println();
+        System.out.println("                                                                      RAZIEL");
+        System.out.println("                                                           Assistente de Estudos em Java");
+        System.out.println("                                                           Aprender | Praticar | Evoluir  ");
+        System.out.println();
+
+        System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------------------");
+
+        System.out.println();
+        System.out.println("Bem vindo ao RAZIEL. ");
+        System.out.println("Digite sua pergunta para começar. ");
+        System.out.println();
     }
 
     public void iniciarleitor() {

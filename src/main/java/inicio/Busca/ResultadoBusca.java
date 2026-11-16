@@ -8,8 +8,8 @@ public class ResultadoBusca {
 
     private final int pontuacao;
 
-    public ResultadoBusca  (RegistroNotas registroNotas, int pontuacao) {
-        if (registroNotas == null){
+    public ResultadoBusca(RegistroNotas registroNotas, int pontuacao) {
+        if (registroNotas == null) {
             throw new IllegalArgumentException("O valor recebido nao pode ser Null");
         }
         if (pontuacao < -0) {

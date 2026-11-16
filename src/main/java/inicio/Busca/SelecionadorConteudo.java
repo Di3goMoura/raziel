@@ -1,4 +1,3 @@
-
 package inicio.Busca;
 
 import inicio.Interpretacao.Intencao;
@@ -33,11 +32,11 @@ public class SelecionadorConteudo {
                 Intencao intencao = intencaos.get(0);
                 String tituloProcurado = "";
                 String tituloNivel = "";
-                if (nivelConhecimento == NivelConhecimento.INICIANTE){
+                if (nivelConhecimento == NivelConhecimento.INICIANTE) {
                     tituloNivel = "### Iniciante";
-                }  else if (nivelConhecimento == NivelConhecimento.INTERMEDIARIO){
+                } else if (nivelConhecimento == NivelConhecimento.INTERMEDIARIO) {
                     tituloNivel = "### Intermediário";
-                } else if (nivelConhecimento == NivelConhecimento.AVANCADO){
+                } else if (nivelConhecimento == NivelConhecimento.AVANCADO) {
                     tituloNivel = "### Avançado";
                 }
 
@@ -71,7 +70,7 @@ public class SelecionadorConteudo {
                         } else {
                             dentroDaSecao = false;
                         }
-                    }else if (linha.startsWith("### ")){
+                    } else if (linha.startsWith("### ")) {
                         dentroNivel = linha.equals(tituloNivel);
 
                     } else {

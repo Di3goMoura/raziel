@@ -28,11 +28,10 @@ public class InterpretadorIntencao {
                     break;
 
 
-
                 }
             }
 
-    }
+        }
         return intençoesEncontradas;
-}
     }
+}

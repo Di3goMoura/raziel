@@ -34,7 +34,7 @@ public class secaoConhecimento {
         return id;
     }
 
-    public String setTitulo(){
+    public String setTitulo() {
         return titulo;
     }
 

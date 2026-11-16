@@ -37,21 +37,25 @@ public class metadados {
         return assunto;
     }
 
-    public void setAssunto( String assunto) {
+    public void setAssunto(String assunto) {
         this.assunto = assunto;
     }
 
-    public String getCategoria(){
+    public String getCategoria() {
         return categoria;
 
     }
-    public void setCategoria(String categoria){
+
+    public void setCategoria(String categoria) {
         this.categoria = categoria;
     }
-    public List<String>getPalavrasChave(){
+
+    public List<String> getPalavrasChave() {
         return palavrasChave;
 
-    }public void setPalavrasChave(List<String> palavrasChave){
+    }
+
+    public void setPalavrasChave(List<String> palavrasChave) {
         this.palavrasChave = palavrasChave;
     }
 }

@@ -30,5 +30,9 @@ public class SistemaBusca {
 
     public void iniciarBusca() {
         localizadorNotas.indexNotas();
+
+
     }
+
+
 }

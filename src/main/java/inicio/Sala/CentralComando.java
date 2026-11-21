@@ -1,6 +1,7 @@
 package inicio.Sala;
 
 import inicio.Interpretacao.Intencao;
+import inicio.Interpretacao.InterpretadorProjetos;
 import inicio.Interpretacao.NivelConhecimento;
 
 import java.util.List;
@@ -10,13 +11,17 @@ public class CentralComando {
     SistemaInterpretacao sistemaInterpretacao;
     SistemaBusca sistemaBusca;
     SistemaResposta sistemaResposta;
+    SistemaProjeto sistemaProjeto;
+    InterpretadorProjetos interpretadorProjetos;
 
     public CentralComando(SistemaLeitura sistemaLeitura, SistemaInterpretacao sistemaInterpretacao, SistemaBusca sistemaBusca,
-                          SistemaResposta sistemaResposta) {
+                          SistemaResposta sistemaResposta, SistemaProjeto sistemaProjeto) {
         this.sistemaLeitura = sistemaLeitura;
         this.sistemaInterpretacao = sistemaInterpretacao;
         this.sistemaBusca = sistemaBusca;
         this.sistemaResposta = sistemaResposta;
+        this.sistemaProjeto = sistemaProjeto;
+        this.interpretadorProjetos = sistemaProjeto.ChamaProjetos();
 
     }
 
@@ -30,9 +35,14 @@ public class CentralComando {
         NivelConhecimento nivel = sistemaInterpretacao.interpretarNivel(pergunta);
 
         List<Intencao> intencoes = sistemaInterpretacao.interpretadorIntencao(pergunta);
-        System.out.println("DEBUG - Intenções encontradas: " + intencoes);
 
         List<String> assuntos = sistemaInterpretacao.interpretarAssunto(pergunta);
+        System.out.println("DEBUG - Navegando: " + interpretadorProjetos.estaNavegando());
+        if (pergunta.equals("Meus Projetos") || interpretadorProjetos.estaNavegando()) {
+            interpretadorProjetos.interpretar(pergunta);
+            return "";
+        }
+
 
         if (assuntos.isEmpty()) {
             return "Nao encontrei esse assunto nas minhas anotaçoes";

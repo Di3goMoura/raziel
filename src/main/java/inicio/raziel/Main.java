@@ -1,10 +1,14 @@
 package inicio.raziel;
 
 
+import inicio.Banco.GerenciadorConexao;
 import inicio.Busca.LocalizadorNotas;
 import inicio.Busca.SelecionadorConteudo;
 import inicio.Interpretacao.*;
+import inicio.Leitura.LeitorPastas;
+import inicio.Leitura.RegistroNotas;
 import inicio.Leitura.RepositorioNotas;
+import inicio.Leitura.RepositorioProjetos;
 import inicio.Resposta.ConstrutorResposta;
 import inicio.Sala.*;
 
@@ -32,6 +36,11 @@ public class Main {
            System.out.println("erro ao carregar os niveis");
            return;
        }
+
+
+       SistemaProjeto sistemaProjeto = new SistemaProjeto();
+       InterpretadorProjetos interpretadorProjetos = sistemaProjeto.ChamaProjetos();
+        RepositorioProjetos repositorioProjetos = new RepositorioProjetos();
         InterpretadorIntencao interpretadorIntencao = new InterpretadorIntencao(catalogoIntencoes);
         InterpretadorNivel interpretadorNivel = new InterpretadorNivel(catalogoNiveis);
         InterpretadorAssunto interpretadorAssunto = new InterpretadorAssunto(repositorio);
@@ -42,10 +51,12 @@ public class Main {
         SistemaBusca sistemaBusca = new SistemaBusca(localizadorNotas, selecionadorConteudo);
         ConstrutorResposta construtorResposta = new ConstrutorResposta();
         SistemaResposta sistemaResposta = new SistemaResposta(construtorResposta);
-        CentralComando centralComando = new CentralComando(sistemaLeitura, sistemaInterpretacao, sistemaBusca,sistemaResposta);
+        CentralComando centralComando = new CentralComando(sistemaLeitura, sistemaInterpretacao, sistemaBusca,sistemaResposta,sistemaProjeto);
         CiclodeVida ciclodeVida = new CiclodeVida();
+
         InterfaceTerminal interfaceTerminal = new InterfaceTerminal(centralComando, ciclodeVida);
         interfaceTerminal.Iniciar();
+
 
 
 
